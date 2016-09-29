@@ -213,6 +213,26 @@ class Message
     }
 
     /**
+     * Add a Sender address to the message.
+     *
+     * @param string $email
+     * @param string $name
+     *
+     * @return \Bogardo\Mailgun\Mailgun\Message
+     */
+    public function sender($email, $name = false)
+    {
+        if ($name) {
+            $this->{'h:Sender'} = "'{$name}' <{$email}>";
+        } else {
+            $this->{'h:Sender'} = $email;
+        }
+
+        return $this;
+    }
+
+
+    /**
      * Set the HTML body for the message.
      *
      * @param string $html
