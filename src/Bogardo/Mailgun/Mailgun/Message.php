@@ -19,6 +19,7 @@ class Message
         $this->setConfigReplyTo();
         $this->setNativeSend();
         $this->setTestMode();
+        $this->dkimHostname = "";
     }
 
     /**
@@ -315,6 +316,20 @@ class Message
     {
         $enabled = ($enabled === true ? 'yes' : 'no');
         $this->{'o:dkim'} = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Enables/disables DKIM host signatures on per-message basis.
+     *
+     * @param bool $enabled
+     *
+     * @return \Bogardo\Mailgun\Mailgun\Message
+     */
+    public function dkimHost($host)
+    {
+        $this->dkimHostname = $host;
 
         return $this;
     }
