@@ -103,8 +103,7 @@ class Mailgun extends MailgunApi
         if ($this->message->dkimHostname != "") {
             return $this->mailgun(true, config('mailgun.api_key'))->sendMessage($this->message->dkimHostname, $this->getMessageData(), $this->getAttachmentData());
         } else {
-            return;
-            // return $this->mailgun(true, config('mailgun.api_key'))->sendMessage(config('mailgun.domain'), $this->getMessageData(), $this->getAttachmentData());
+            return $this->mailgun(true, config('mailgun.api_key'))->sendMessage(config('mailgun.domain'), $this->getMessageData(), $this->getAttachmentData());
         }
     }
 
